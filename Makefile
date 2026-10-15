@@ -7,7 +7,7 @@
 # Must be set as an env variable before make is invoked.
 HOST_TOOL_ARCHIVE_NAME := ""
 HOST_TOOL_ARCHIVE_EXTENSION := ".tar"
-VIVADO_VERSION := "2025.2"
+VIVADO_VERSION := "2025.1"
 
 
 CONTAINER_INSTALL_TARGET_DIR := /opt/Xilinx

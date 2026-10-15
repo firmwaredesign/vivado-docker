@@ -8,7 +8,7 @@
 # and batch modes.
 #
 # Environment variables:
-#   VIVADO_VERSION  Vivado version (default: 2025.2)
+#   VIVADO_VERSION  Vivado version (default: 2025.1)
 #   SRC_DIR         Host directory to mount at /src (default: current dir)
 #   WORK_DIR        Host directory to mount at /work (default: current dir)
 #   VIVADO_CMD      Command to run (default: interactive Vivado GUI)
@@ -26,7 +26,7 @@ if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then
 	INTERACTIVE=(--interactive --tty)
 fi
 
-VIVADO_VERSION="${VIVADO_VERSION:-2025.2}"
+VIVADO_VERSION="${VIVADO_VERSION:-2025.1}"
 VIVADO_PATH="/opt/Xilinx/${VIVADO_VERSION}/Vivado"
 
 # Paths — override via environment if needed

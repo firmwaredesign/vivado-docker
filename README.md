@@ -170,7 +170,7 @@ SRC_DIR=/path/to/fpga/project WORK_DIR=/path/to/output \
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `VIVADO_VERSION` | `2025.2` | Vivado version to use |
+| `VIVADO_VERSION` | `2025.1` | Vivado version to use |
 | `SRC_DIR` | current directory | Host directory mounted at `/src` |
 | `WORK_DIR` | current directory | Host directory mounted at `/work` |
 | `VIVADO_CMD` | `vivado` (GUI) | Command to run inside container |

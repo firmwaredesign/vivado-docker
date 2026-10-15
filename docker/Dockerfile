@@ -9,7 +9,7 @@ FROM --platform=linux/amd64 ubuntu:22.04
 
 ARG INSTALL_TARGET_DIR=/opt/Xilinx
 ARG HOST_TOOL_ARCHIVE_NAME
-ARG VIVADO_VERSION=2025.2
+ARG VIVADO_VERSION=2025.1
 ARG HOST_TOOL_ARCHIVE_EXTENSION=.tar
 
 ENV XILINX_INSTALL_LOCATION=$INSTALL_TARGET_DIR
@@ -116,6 +116,17 @@ RUN --mount=type=bind,source=${HOST_TOOL_ARCHIVE_NAME},target=/tmp/archive.tar \
     && mkdir -p /etc/udev/rules.d \
     && cd "${INSTALL_TARGET_DIR}/${VIVADO_VERSION}/Vivado/data/xicom/cable_drivers/lin64/install_script/install_drivers" \
     && ./install_drivers
+
+# Needed by the VB278 Zynq build (build.sh): gettext-base gives envsubst
+# (README template), zip packages the hand-over, x11-utils gives xlsclients,
+# which xsct (FSBL build) needs. Kept after the Vivado install so adding them
+# does not rerun that layer.
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        gettext-base \
+        x11-utils \
+        zip \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY run.sh /
 RUN chmod a+x /run.sh
